@@ -11,28 +11,11 @@
 height: 100%;
 grid-template-rows: 50px 1fr 50px;
 }
-header{
-  grid-area: header;
-  background-color: #2a5ea5;
-  color: aliceblue;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 20px;
 
-}
 main{
   grid-area: main;
 }
-footer{
-  grid-area: footer;
-  background-color: #2a5ea5;
-  color: aliceblue;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 20px;
-}
+
 #root{
   height: 100vh;
   
