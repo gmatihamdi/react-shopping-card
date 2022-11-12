@@ -1,8 +1,10 @@
 import React from "react";
 import"../../css/footer/footer.css"
+import{words} from '../../words'
+
 function Footer(){
     return(
-        <footer>Gmati-app-2022</footer>
+        <footer>{words.footertitle}</footer>
     )
 }
 
