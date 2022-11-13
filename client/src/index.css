@@ -20,3 +20,16 @@ main{
   height: 100vh;
   
 }
+.wrapper{
+  padding: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.wrapper .productElm{
+  width: 68%;
+}
+
+.wrapper .filterElm{
+  width: 30%;
+}
