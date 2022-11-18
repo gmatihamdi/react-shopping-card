@@ -6,7 +6,6 @@ import data from './datafile.json';
 
 function App() {
   const [products,setProducts]=useState(data);
-  console.log(products);
   return (
     <div className="layout">
 
