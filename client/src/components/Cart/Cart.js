@@ -1,5 +1,6 @@
 import React ,{useState}from 'react'
 import '../../css/Cart/cart.css'
+import Bounce from 'react-reveal/Bounce'
 import Checkout from '../CheckoutForm/Checkout';
 function Cart(props) {
     const[showform,setShowform]=useState(false);
@@ -16,13 +17,14 @@ function Cart(props) {
         setValue((prevState)=>({...prevState,[e.target.name]:e.target.value}))
     }
   return (
+    
     <div className='cart-wrapper'>
     <div className='cart-title'>{props.cartItem.length === 0 ? 'Empty Card' : <p>
         there is {props.cartItem.length} product in cart
     </p> }</div>
 <div className='cart-items'>
 {props.cartItem.map(p=>(
-
+    <Bounce left cascade>
     <div className='cart-item'>
         <img src={p.imgeUrl} alt=''></img>
         <div className='cart-info'>
@@ -35,7 +37,7 @@ function Cart(props) {
             <button onClick={()=>props.removeFromCart(p)}>Remove</button>
         </div>
     </div>
-
+    </Bounce>
 ))}
    
 </div>
@@ -52,6 +54,7 @@ function Cart(props) {
 
 <Checkout  showform={showform} setShowform={setShowform} submitOrder={submitOrder} handleChange={handleChange}/>
     </div>
+   
   )
 }
 
