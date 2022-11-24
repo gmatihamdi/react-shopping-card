@@ -1,14 +1,17 @@
 const express = require('express');
-const cors = require('cors');
-const http = require('http');
-const router=express.Router()
-const app = express();
+const mongoose=require('mongoose');
+const bodyParser=require('body-parser');
+const Product = require('./models/productModel');
+const router = require('./routes/router');
 
-app.use(cors());
-app.get('/',(req,res)=>{
-    res.send('hello hamdi')
-});
+const app=express();
+app.use(bodyParser.json());
+app.use('/',router)
+const connectionString='mongodb://localhost:27017/shopping';
+mongoose.connect(connectionString
+//    ,{useNewUrlParser:true,userUnifiedTopology:true}
+    ).then(res=>console.log("connection done"))
 
-app.listen(3000,()=>
-console.log("Server is Running")
-)
+app.listen(5001,()=>{
+    console.log("Running on port 5001")
+})
