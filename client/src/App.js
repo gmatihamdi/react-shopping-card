@@ -5,7 +5,8 @@ import Footer from './components/footer/Footer';
 import Header from './components/header/Header';
 import Products from './components/Products/Products';
 import data from './datafile.json';
-
+import {Provider} from 'react-redux';
+import store from '../src/store/store.js'
 function App() {
   const [products,setProducts]=useState(data);
   const [sort,setSort]=useState("");
@@ -60,13 +61,15 @@ const  handleFilterBySize=(e)=> {
     localStorage.setItem('cartItem',JSON.stringify(cartItem))
   }, [cartItem]);
   return (
+
+    <Provider store={store}>
     <div className="layout">
 
       <Header/>
       <main>
         <div className='wrapper'>
 
-         <Products products={products} addToCart={addToCart}></Products>
+         <Products  addToCart={addToCart}></Products>
           <Filter productNumber={products.length} handleFilterBySize={handleFilterBySize} size={size}
            handleFilterByOrder={handleFilterByOrder} sort={sort}/>
         </div>
@@ -75,6 +78,7 @@ const  handleFilterBySize=(e)=> {
       <Footer></Footer>
       
     </div>
+    </Provider>
   );
 }
 
