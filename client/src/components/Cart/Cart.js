@@ -2,6 +2,9 @@ import React ,{useState}from 'react'
 import '../../css/Cart/cart.css'
 import Bounce from 'react-reveal/Bounce'
 import Checkout from '../CheckoutForm/Checkout';
+import { removeCart } from '../../store/actions/cart';
+import {connect} from 'react-redux'
+
 function Cart(props) {
     const[showform,setShowform]=useState(false);
     const[value,setValue]=useState("");
@@ -34,7 +37,7 @@ function Cart(props) {
                 <p>{p.price}</p>
 
             </div>
-            <button onClick={()=>props.removeFromCart(p)}>Remove</button>
+            <button onClick={()=>props.removeCart(p)}>Remove</button>
         </div>
     </div>
     </Bounce>
@@ -58,4 +61,8 @@ function Cart(props) {
   )
 }
 
-export default Cart
+export default connect((state)=>{
+    return{
+        cartItem:state.cart.cartItems
+    }
+},{removeCart}) (Cart)
