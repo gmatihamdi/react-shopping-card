@@ -3,11 +3,14 @@ import '../../css/Cart/cart.css'
 import Bounce from 'react-reveal/Bounce'
 import Checkout from '../CheckoutForm/Checkout';
 import { removeCart } from '../../store/actions/cart';
-import {connect} from 'react-redux'
+import {connect} from 'react-redux';
+
+import OrderModel from './OrderModel';
 
 function Cart(props) {
     const[showform,setShowform]=useState(false);
     const[value,setValue]=useState("");
+    const [order,setOrder]=useState(false)
     const submitOrder =(e)=>{
         e.preventDefault();
         const order={
@@ -15,13 +18,21 @@ function Cart(props) {
             email:value.email
         }
         console.log(order)
+        setOrder(order)
     }
     const handleChange =(e)=>{
         setValue((prevState)=>({...prevState,[e.target.name]:e.target.value}))
     }
+    const closeModel=()=>{
+        setOrder(false)
+    }
   return (
     
     <div className='cart-wrapper'>
+<OrderModel closeModel={closeModel} order={order} cartItem={props.cartItem}></OrderModel>
+
+
+
     <div className='cart-title'>{props.cartItem.length === 0 ? 'Empty Card' : <p>
         there is {props.cartItem.length} product in cart
     </p> }</div>
