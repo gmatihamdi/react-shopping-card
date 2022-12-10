@@ -1,13 +1,14 @@
-import React,{useState,useEffect} from 'react';
-import Cart from './components/Cart/Cart';
-import Filter from './components/filter/Filter';
+import React from 'react';
 import Footer from './components/footer/Footer';
 import Header from './components/header/Header';
-import Products from './components/Products/Products';
-import data from './datafile.json';
 import {Provider} from 'react-redux';
-import store from '../src/store/store.js'
+import store from '../src/store/store.js';
+import {BrowserRouter,NavLink, Routes,Route} from 'react-router-dom';
+import Home from './pages/home';
+import Orders from './pages/Orders';
+
 function App() {
+  /*
   const [products,setProducts]=useState(data);
   const [sort,setSort]=useState("");
   const [size,setSize]=useState("");
@@ -60,25 +61,35 @@ const  handleFilterBySize=(e)=> {
   useEffect(() => {
     localStorage.setItem('cartItem',JSON.stringify(cartItem))
   }, [cartItem]);
+  */
   return (
-
+<BrowserRouter>
     <Provider store={store}>
     <div className="layout">
 
       <Header/>
       <main>
-        <div className='wrapper'>
+      <div className='nav'>
+        <ul>
+          <li> <NavLink to="/">Home</NavLink></li>
+          <li> <NavLink to="/Orders">Orders</NavLink></li>
 
-         <Products  addToCart={addToCart}></Products>
-          <Filter productNumber={products.length} handleFilterBySize={handleFilterBySize} size={size}
-           handleFilterByOrder={handleFilterByOrder} sort={sort}/>
-        </div>
-        <Cart cartItem={cartItem} removeFromCart={removeFromCart}/>
+        </ul>
+      </div>
+        <Routes>
+          <Route path='/' element={<Home/>} exact />
+          <Route path='/Orders' element={<Orders/>} exact />
+
+        </Routes>
+
+
+
       </main>
       <Footer></Footer>
       
     </div>
     </Provider>
+    </BrowserRouter>
   );
 }
 

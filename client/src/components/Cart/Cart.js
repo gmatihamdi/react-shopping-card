@@ -1,16 +1,15 @@
-import React ,{useState}from 'react'
-import '../../css/Cart/cart.css'
-import Bounce from 'react-reveal/Bounce'
+import React ,{useState}from 'react';
+import Bounce from 'react-reveal/Bounce';
 import Checkout from '../CheckoutForm/Checkout';
 import { removeCart } from '../../store/actions/cart';
+import { creatOrder,clearOrder } from '../../store/actions/order';
 import {connect} from 'react-redux';
-
 import OrderModel from './OrderModel';
-
+import "../../css/Cart/cart.css"
 function Cart(props) {
     const[showform,setShowform]=useState(false);
     const[value,setValue]=useState("");
-    const [order,setOrder]=useState(false)
+
     const submitOrder =(e)=>{
         e.preventDefault();
         const order={
@@ -18,18 +17,21 @@ function Cart(props) {
             email:value.email
         }
         console.log(order)
-        setOrder(order)
+      //  setOrder(order)
+      props.creatOrder(order)
+      setShowform(false)
     }
     const handleChange =(e)=>{
         setValue((prevState)=>({...prevState,[e.target.name]:e.target.value}))
     }
     const closeModel=()=>{
-        setOrder(false)
+        //setOrder(false)
+        props.clearOrder()
     }
   return (
     
     <div className='cart-wrapper'>
-<OrderModel closeModel={closeModel} order={order} cartItem={props.cartItem}></OrderModel>
+<OrderModel closeModel={closeModel} order={props.order} cartItem={props.cartItem}></OrderModel>
 
 
 
@@ -74,6 +76,7 @@ function Cart(props) {
 
 export default connect((state)=>{
     return{
-        cartItem:state.cart.cartItems
+        cartItem:state.cart.cartItems,
+        order:state.order.order
     }
-},{removeCart}) (Cart)
+},{removeCart,creatOrder,clearOrder}) (Cart)

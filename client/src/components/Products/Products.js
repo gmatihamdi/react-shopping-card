@@ -1,6 +1,5 @@
 import React,{useState,useEffect} from 'react'
 import "../../css/Products/Products.css"
-import Modal from 'react-modal'
 import Bounce from 'react-reveal/Bounce'
 import ProductModal from './ProductModal';
 import {connect} from 'react-redux'

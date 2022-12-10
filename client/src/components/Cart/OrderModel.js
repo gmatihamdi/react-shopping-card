@@ -2,6 +2,8 @@ import React from 'react'
 import Modal from "react-modal"
 function OrderModel(props) {
   return (
+<>
+    {props.order &&
     <Modal isOpen={props.order} onRequestClose={props.closeModel}>
 
 <div className='order-info'>
@@ -37,6 +39,9 @@ function OrderModel(props) {
 </div>
     
     </Modal>
+
+}
+</>
   )
 }
 export default OrderModel
