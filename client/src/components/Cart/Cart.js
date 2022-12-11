@@ -55,8 +55,8 @@ function Cart(props) {
     </div>
     </Bounce>
 ))}
-   
 </div>
+
 { props.cartItem.length !== 0 && 
 (
 <div className='cart-footer'>

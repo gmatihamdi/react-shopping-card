@@ -8,7 +8,7 @@ import Modal from 'react-modal'
     <span className='close-icon' onClick={closeModel}> &times; </span>
 <div className='product-info'>
 <img src={product.imgeUrl} alt={product.title}></img>
-<p>{product.price}</p>
+<p>{product.title}</p>
 <p>{product.desc}</p>
 <p>${product.price}</p>
 

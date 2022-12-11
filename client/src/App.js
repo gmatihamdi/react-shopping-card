@@ -5,8 +5,7 @@ import {Provider} from 'react-redux';
 import store from '../src/store/store.js';
 import {BrowserRouter,NavLink, Routes,Route} from 'react-router-dom';
 import Home from './pages/home';
-import Orders from './pages/Orders';
-
+import Orders from './pages/Orders'
 function App() {
   /*
   const [products,setProducts]=useState(data);
