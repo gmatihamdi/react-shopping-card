@@ -19,5 +19,7 @@
     "mongoose": "^6.7.2",
     "node-modules": "^1.0.1",
     "nodemon": "^2.0.20"
-  }
+    
+  },
+  "engines": { "node": "12.16.1", "npm": "6.14.4" }
 }
