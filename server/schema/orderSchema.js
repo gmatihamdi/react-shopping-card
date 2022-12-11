@@ -8,5 +8,3 @@ const orderSchema= mongoose.Schema({
     timestamps:true
 })
 module.exports=orderSchema
-
-//rect
